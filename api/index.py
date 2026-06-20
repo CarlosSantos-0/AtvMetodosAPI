@@ -219,6 +219,7 @@ def listar_pedidos_completos():
     conn.close()
     return jsonify(resultado), 200
 
+inicializar_banco()
+
 if __name__ == '__main__':
-    inicializar_banco()  # Garante a criação do banco e das tabelas ao iniciar
     app.run(debug=True)
