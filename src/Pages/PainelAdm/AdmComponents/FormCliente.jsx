@@ -28,7 +28,7 @@ function FormCliente() {
     //Fetch da API
     try {
         //Não lembro exatamente mais acho que é aqui que a gente define aquela parte de URL
-      const response = await fetch('http://localhost:3000/api/clientes', {
+      const response = await fetch('/api/clientes', {
         method: 'POST',
         headers: {
             //Enviando qual o formato

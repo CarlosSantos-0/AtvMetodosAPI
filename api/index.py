@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash
 app = Flask(__name__)
 CORS(app)  # Permite que o frontend em React acesse a API
 
-DATABASE = 'sistema_extensao.db'
+DATABASE = '/tmp/sistema_extensao.db'
 
 def conectar_banco():
     """Conecta ao SQLite e garante que o suporte a chaves estrangeiras esteja ativo."""

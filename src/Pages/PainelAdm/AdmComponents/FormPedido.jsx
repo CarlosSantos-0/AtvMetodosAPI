@@ -3,12 +3,12 @@ import styles from '../PaginaAdm.module.css';
 
 function FormPedido() {
   const [formData, setFormData] = useState({
+    id_cliente: '', 
     data: '',
-    statusPedido: '',
+    status: '',     
     total: ''
   });
-  const [status, setStatus] = useState('idle');
-
+  const [statusSubmit, setStatusSubmit] = useState('idle'); 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -19,10 +19,10 @@ function FormPedido() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('loading');
+    setStatusSubmit('loading');
 
     try {
-      const response = await fetch('http://localhost:3000/api/pedidos', {
+      const response = await fetch('/api/pedidos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,10 +34,10 @@ function FormPedido() {
         throw new Error('Falha ao registrar pedido');
       }
 
-      setStatus('success');
-      setFormData({ data: '', statusPedido: '', total: '' });
+      setStatusSubmit('success');
+      setFormData({ id_cliente: '', data: '', status: '', total: '' });
     } catch (error) {
-      setStatus('error');
+      setStatusSubmit('error');
     }
   };
 
@@ -45,14 +45,17 @@ function FormPedido() {
     <div className={styles.formContainer}>
       <h1>Registrar Novo Pedido</h1>
       
-      {status === 'success' && <p style={{color: 'green'}}>Pedido registrado com sucesso!</p>}
-      {status === 'error' && <p style={{color: 'red'}}>Erro ao registrar. Tente novamente.</p>}
+      {statusSubmit === 'success' && <p style={{color: 'green'}}>Pedido registrado com sucesso!</p>}
+      {statusSubmit === 'error' && <p style={{color: 'red'}}>Erro ao registrar. Tente novamente.</p>}
 
       <div className={styles.card}>
         <form className={styles.form} onSubmit={handleSubmit}>
+          
+          <input type="number" name="id_cliente" value={formData.id_cliente} onChange={handleChange} placeholder="ID do Cliente" className={styles.input} required />
+
           <input type="date" name="data" value={formData.data} onChange={handleChange} className={styles.input} required />
           
-          <select name="statusPedido" value={formData.statusPedido} onChange={handleChange} className={styles.input} required>
+          <select name="status" value={formData.status} onChange={handleChange} className={styles.input} required>
             <option value="">Selecione o Status</option>
             <option value="pendente">Pendente</option>
             <option value="preparando">Em Preparo</option>
@@ -61,8 +64,8 @@ function FormPedido() {
           
           <input type="number" step="0.01" name="total" value={formData.total} onChange={handleChange} placeholder="Total (R$)" className={styles.input} required />
           
-          <button type="submit" className={styles.button} disabled={status === 'loading'}>
-            {status === 'loading' ? 'Registrando...' : 'Gerar Pedido'}
+          <button type="submit" className={styles.button} disabled={statusSubmit === 'loading'}>
+            {statusSubmit === 'loading' ? 'Registrando...' : 'Gerar Pedido'}
           </button>
         </form>
       </div>
