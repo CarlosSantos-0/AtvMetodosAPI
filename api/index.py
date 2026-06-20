@@ -87,7 +87,7 @@ def inicializar_banco():
 # ROTAS DA API
 
 # CADASTRAR CLIENTE
-@app.route('/clientes', methods=['POST'])
+@app.route('/api/clientes', methods=['POST'])
 def cadastrar_cliente():
     dados = request.get_json(silent=True) or {}
     resposta = validar_json(dados, ['nome', 'email', 'senha'])
@@ -115,7 +115,7 @@ def cadastrar_cliente():
             conn.close()
 
 # CADASTRAR PRODUTO
-@app.route('/produtos', methods=['POST'])
+@app.route('/api/produtos', methods=['POST'])
 def cadastrar_produto():
     dados = request.get_json(silent=True) or {}
     resposta = validar_json(dados, ['tipo', 'nome'])
@@ -136,7 +136,7 @@ def cadastrar_produto():
         conn.close()
 
 # CADASTRAR PEDIDO
-@app.route('/pedidos', methods=['POST'])
+@app.route('/api/pedidos', methods=['POST'])
 def cadastrar_pedido():
     dados = request.get_json(silent=True) or {}
     resposta = validar_json(dados, ['id_cliente', 'data', 'status'])
@@ -159,7 +159,7 @@ def cadastrar_pedido():
         conn.close()
 
 # ADICIONAR ITENS AO PEDIDO
-@app.route('/itens-pedido', methods=['POST'])
+@app.route('/api/itens-pedido', methods=['POST'])
 def adicionar_item_pedido():
     dados = request.get_json(silent=True) or {}
     resposta = validar_json(dados, ['id_pedido', 'id_produto', 'qtd_pedido', 'valor_unitario'])
@@ -190,7 +190,7 @@ def adicionar_item_pedido():
         conn.close()
 
 # ROTA AUXILIAR PARA CONSULTAR DADOS (Útil para o TanStack Query testar os GETs)
-@app.route('/pedidos/completos', methods=['GET'])
+@app.route('/api/pedidos/completos', methods=['GET'])
 def listar_pedidos_completos():
     conn = conectar_banco()
     cursor = conn.cursor()
