@@ -165,7 +165,7 @@
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    max-width: 600px; /* Mantém o formulário num tamanho legível */
+    max-width: 600px; 
 }
 
 .form {
@@ -216,4 +216,28 @@
     background-color: var(--accent-color);
     color: var(--white);
     font-weight: bold;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.pendente {
+    background-color: #ffe6e6;
+    color: #c62828;
+}
+
+.preparando {
+    background-color: #fff3e0;
+    color: #ef6c00;
+}
+
+.entregue {
+    background-color: #e8f5e9;
+    color: var(--accent-color);
 }

@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import styles from "../PaginaAdm.module.css";
+import styles from '../PaginaAdm.module.css'; 
 import Sidebar from "../AdmComponents/Sidebar";
 import FormCliente from "../AdmComponents/FormCliente";
 import FormProduto from "../AdmComponents/FormProduto";
 import FormPedido from "../AdmComponents/FormPedido";
+import VisualizarPedidos from "../AdmComponents/VisualizarPedidos"; 
 
 function PaginaAdm() {
   const [abaAtiva, setAbaAtiva] = useState('clientes');
@@ -16,6 +17,8 @@ function PaginaAdm() {
         return <FormProduto />;
       case 'pedidos':
         return <FormPedido />;
+      case 'listar_pedidos': 
+        return <VisualizarPedidos />;
       default:
         return <FormCliente />;
     }
@@ -24,7 +27,6 @@ function PaginaAdm() {
   return (
     <div className={styles.app}>
       <Sidebar abaAtiva={abaAtiva} setAbaAtiva={setAbaAtiva} />
-      
       <main className={styles.dashboard}>
         {renderizarConteudo()}
       </main>

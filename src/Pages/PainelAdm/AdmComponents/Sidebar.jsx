@@ -6,23 +6,17 @@ function Sidebar({ abaAtiva, setAbaAtiva }) {
       <h2>Marmitaria Papa Da Wal</h2>
 
       <ul>
-        <li 
-          className={abaAtiva === 'clientes' ? styles.ativo : ''}
-          onClick={() => setAbaAtiva('clientes')}
-        >
+        <li className={abaAtiva === 'clientes' ? styles.ativo : ''} onClick={() => setAbaAtiva('clientes')}>
           Cadastro de Clientes
         </li>
-        <li 
-          className={abaAtiva === 'produtos' ? styles.ativo : ''}
-          onClick={() => setAbaAtiva('produtos')}
-        >
+        <li className={abaAtiva === 'produtos' ? styles.ativo : ''} onClick={() => setAbaAtiva('produtos')}>
           Cadastro de Produtos
         </li>
-        <li 
-          className={abaAtiva === 'pedidos' ? styles.ativo : ''}
-          onClick={() => setAbaAtiva('pedidos')}
-        >
+        <li className={abaAtiva === 'pedidos' ? styles.ativo : ''} onClick={() => setAbaAtiva('pedidos')}>
           Registro de Pedidos
+        </li>
+        <li className={abaAtiva === 'listar_pedidos' ? styles.ativo : ''} onClick={() => setAbaAtiva('listar_pedidos')}>
+          Visualizar Pedidos
         </li>
       </ul>
     </aside>
