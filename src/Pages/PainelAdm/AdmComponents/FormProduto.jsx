@@ -22,7 +22,7 @@ function FormProduto() {
     setStatus('loading');
 
     try {
-      const response = await fetch('/api/clientes', {
+      const response = await fetch('/api/produto', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
