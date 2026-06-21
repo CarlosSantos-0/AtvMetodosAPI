@@ -211,7 +211,6 @@
     transform: scale(0.98);
 }
 
-/* Classe para destacar o item selecionado na Sidebar */
 .ativo {
     background-color: var(--accent-color);
     color: var(--white);
